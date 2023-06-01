@@ -1,0 +1,164 @@
+header.app-header {
+  position: sticky;
+  top: 0;
+
+  z-index: 1;
+
+  backdrop-filter: blur(25px);
+
+  > .center-content {
+    display: flex;
+    align-items: center;
+    gap: $space-medium;
+
+    padding: $space-large $space-medium;
+
+    > .brand {
+      width: $size-side-menu;
+      padding: 0 $space-smaller;
+
+      > h6 {
+        display: flex;
+        align-items: center;
+        gap: $space-normal;
+
+        font-size: $font-size-medium;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+
+        > i {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          $size: 36px;
+
+          width: $size;
+          height: $size;
+          border-radius: $size;
+
+          background-color: $color-surface;
+          color: $color-background;
+        }
+      }
+    }
+
+    > form {
+      width: 100%;
+      max-width: 480px;
+
+      display: flex;
+      align-items: center;
+
+      position: relative;
+
+      $icon-size: 24px;
+
+      &:focus-within {
+        > i {
+          color: $color-text;
+        }
+      }
+
+      > i {
+        @include with-transition;
+        transition-property: color;
+
+        position: absolute;
+        left: 16px;
+
+        font-size: $icon-size;
+        color: $color-muted;
+      }
+
+      > input {
+        @include with-transition;
+        transition-property: border-color;
+
+        flex: 1;
+
+        height: 44px;
+        border-radius: $radii-normal;
+
+        background-color: $color-element-background;
+
+        padding-left: $space-normal + $icon-size + $space-normal;
+        padding-right: $space-normal;
+
+        font-size: $font-size-body;
+        color: $color-text;
+
+        border: 2px solid transparent;
+
+        &:focus-visible {
+          border-color: rgba($color-surface, 0.1);
+        }
+
+        &::placeholder {
+          color: $color-muted;
+        }
+      }
+    }
+
+    > nav {
+      display: flex;
+      align-items: center;
+      gap: $space-normal;
+
+      margin-left: auto;
+
+      > a {
+        @include with-common-interaction;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+
+        $size: 44px;
+
+        width: $size;
+        height: $size;
+        border-radius: $size;
+
+        background-color: $color-element-background;
+        color: $color-muted;
+
+        > i {
+          font-size: $font-size-medium;
+        }
+
+        > img {
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+
+          object-fit: cover;
+
+          border: 2px solid $color-primary;
+        }
+        
+        &[data-pending="true"] {
+          &::before {
+            content: '';
+
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            $size: 8px;
+
+            width: $size;
+            height: $size;
+            border-radius: $size;
+
+            background-color: $color-primary;
+            border: 2px solid $color-background;
+          }
+        }
+      }
+    }
+  }
+}
+
