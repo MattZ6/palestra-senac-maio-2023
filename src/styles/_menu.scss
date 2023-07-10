@@ -1,0 +1,123 @@
+aside.app-menu {
+  display: flex;
+  flex-direction: column;
+
+  > nav {
+    display: flex;
+    flex-direction: column;
+    gap: $space-smaller;
+
+    position: fixed;
+    z-index: 1;
+
+    @media screen and (max-width: $screen-medium) {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+
+      flex-direction: row;
+      gap: 0;
+
+      padding: $space-smaller;
+      bottom: 24px;
+      border-radius: $radii-full;
+
+      background-color: $color-element-background;
+      backdrop-filter: blur(20px);
+    }
+
+    > a {
+      @include with-common-interaction;
+
+      display: inline-flex;
+      align-items: center;
+      gap: $space-normal;
+
+      font-size: $font-size-body;
+
+      height: 40px;
+      padding-left: $space-medium;
+      padding-right: $space-small;
+
+      border-radius: $radii-small;
+
+      color: $color-muted;
+
+      position: relative;
+
+      &[aria-current="page"] {
+        @include with-common-interaction($color-primary);
+
+        color: $color-primary;
+
+        &::before {
+          content: '';
+
+          width: 4px;
+          height: 50%;
+          border-radius: $radii-x-small;
+
+          position: absolute;
+          left: 8px;
+
+          background-color: $color-primary;
+
+          box-shadow: 2px 4px 12px rgba($color-primary, 0.82);
+        }
+      }
+
+      @media screen and (max-width: $screen-x-large) {
+        justify-content: center;
+
+        position: relative;
+
+        $size: 48px;
+
+        width: $size;
+        height: $size;
+
+        padding: 0;
+
+        &::before {
+          display: none;
+        }
+
+        &:hover, &:focus-visible {
+          > span {
+            opacity: 1;
+            transform: translateX(8px);
+          }
+        }
+
+        > span {
+          @include with-transition;
+          transition-property: opacity, transform;
+
+          position: absolute;
+          left: 100%;
+
+          font-size: $font-size-normal;
+          color: $color-background;
+
+          border-radius: $radii-small;
+          padding: $space-x-small $space-small;
+          background-color: rgba($color-surface, 0.9);
+
+          opacity: 0;
+
+          z-index: 1;
+
+          pointer-events: none;
+        }
+      }
+
+      @media screen and (max-width: $screen-medium) {
+        border-radius: $radii-full;
+      }
+
+      > i {
+        font-size: $font-size-medium;
+      }
+    }
+  }
+}

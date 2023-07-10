@@ -1,0 +1,120 @@
+section.friends {
+  @include base-section;
+
+  > article {
+    display: flex;
+    flex-direction: column;
+
+    background-color: $color-element-background;
+
+    margin-top: $space-smaller;
+
+    border-radius: $radii-default;
+    padding: $space-normal 0;
+
+    > div {
+      @include with-transition;
+      transition-property: background-color;
+
+      display: flex;
+      align-items: center;
+      gap: $space-normal;
+
+      padding: $space-small $space-medium;
+      cursor: default;
+
+      &[data-online="true"] {
+        > figure {
+          position: relative;
+
+          &::after {
+            @include with-transition;
+
+            content: '';
+
+            $size: 8px;
+
+            width: $size;
+            height: $size;
+            border-radius: $size;
+            background-color: $color-online;
+
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+
+            border: 2px solid $color-background;
+          }
+        }
+
+        > div {
+          > span {
+            color: $color-online;
+          }
+        }
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: $color-element-background;
+        }
+      }
+
+      > figure {
+        $size: 40px;
+
+        width: $size;
+        height: $size;
+        border-radius: $size;
+
+        > img {
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+        }
+      }
+
+      > div {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+
+        > strong {
+          // @include with-text-overflow;
+
+          font-size: $font-size-normal;
+          font-weight: $text-medium;
+          color: $color-text;
+        }
+
+        > span {
+          // @include with-text-overflow;
+
+          font-size: $font-size-normal;
+          font-weight: 400;
+          color: $color-muted;
+        }
+      }
+
+      > button {
+        @include with-common-interaction($color-primary);
+
+        display: inline-flex;
+        align-items: center;
+        justify-self: center;
+        gap: $space-smaller;
+
+        font-size: $font-size-normal;
+        color: $color-primary;
+
+        border: none;
+        border-radius: $radii-small;
+
+        padding: 2px $space-small;
+        background-color: transparent;
+      }
+    }
+  }
+}

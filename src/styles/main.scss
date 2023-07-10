@@ -1,2 +1,62 @@
 @import "base";
 @import "header";
+@import "menu";
+@import "banner";
+@import "most-popular";
+@import "wishlist";
+@import "friends";
+
+#app {
+  display: flex;
+  flex-direction: column;
+  gap: $space-normal;
+
+  > .content-container {
+    > .center-content {
+      display: grid;
+      grid-template-columns: $size-side-menu 1fr;
+      gap: $space-medium;
+
+      padding: 0 $space-medium;
+
+      @media screen and (max-width: $screen-x-large) {
+        grid-template-columns: 56px 1fr;
+      }
+
+      @media screen and (max-width: $screen-medium) {
+        grid-template-columns: 0 1fr;
+        gap: 0;
+
+        padding: 0;
+      }
+
+      > main {
+        display: flex;
+        flex-direction: column;
+        gap: $space-x-large;
+
+        padding-bottom: $space-x-large;
+
+        @media screen and (max-width: $screen-medium) {
+          padding-bottom: 112px;
+
+          overflow: hidden;
+
+          section {
+            padding: 0 $space-medium;
+          }
+        }
+
+        > .row {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          gap: $space-medium;
+
+          @media screen and (max-width: $screen-medium) {
+            grid-template-columns: 1fr;
+          }
+        }
+      }
+    }
+  }
+}

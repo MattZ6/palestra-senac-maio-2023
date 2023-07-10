@@ -1,0 +1,7 @@
+section.wishlist {
+  @include base-section;
+
+  > .games-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

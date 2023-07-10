@@ -2,19 +2,19 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
 
   <link rel="stylesheet" href="src/styles/main.css">
 
-  <title>Palestra</title>
+  <title>Game Two</title>
 </head>
 
 <body>
@@ -24,31 +24,256 @@
         <div class="brand">
           <h6>
             <i aria-hidden="true" class="ph ph-game-controller"></i>
-            <span>Game One</span>
+            <span>Game Two</span>
           </h6>
         </div>
 
-        <form class="search">
+        <form role="searchbox" aria-label="Buscar jogos">
           <i aria-hidden="true" class="ph ph-magnifying-glass"></i>
-
-          <input type="search" placeholder="Buscar jogos..." autocomplete="off" />
+          <input type="search" placeholder="Buscar jogos..." spellcheck="false" autocomplete="none" />
         </form>
 
         <nav>
-          <a href="#" data-pending="true" data-tooltip="Notificações">
+          <a href="#" data-pending="true" data-tooltip="Notificações" aria-label="Notificações">
             <i aria-hidden="true" class="ph ph-bell"></i>
           </a>
-
-          <a href="#" data-tooltip="Carrinho">
+          <a href="#" data-tooltip="Carrinho" aria-label="Carrinho">
             <i aria-hidden="true" class="ph ph-shopping-cart"></i>
           </a>
-
-          <a href="#" data-tooltip="Meu perfil">
+          <a href="#" data-tooltip="Meu perfil" aria-label="Meu perfil">
             <img src="https://github.com/rsdavila.png?size=40" alt="" loading="lazy" />
           </a>
         </nav>
       </div>
     </header>
+
+    <div class="content-container">
+      <div class="center-content">
+        <aside class="app-menu">
+          <nav>
+            <a href="#" aria-current="page">
+              <i aria-hidden="true" class="ph ph-storefront"></i>
+              <span>Loja</span>
+            </a>
+            <a href="#">
+              <i aria-hidden="true" class="ph ph-books"></i>
+              <span>Biblioteca</span>
+            </a>
+            <a href="#">
+              <i aria-hidden="true" class="ph ph-chat-teardrop-dots"></i>
+              <span>Comunidade</span>
+            </a>
+            <a href="#">
+              <i aria-hidden="true" class="ph ph-users"></i>
+              <span>Amigos</span>
+            </a>
+          </nav>
+        </aside>
+
+        <main>
+          <section class="banner">
+            <div class="game" role="banner">
+              <header>
+                <ul class="platforms">
+                  <li class="platform" data-tooltip="Roda no uindo">
+                    <i aria-hidden="true" class="ph ph-windows-logo"></i>
+                  </li>
+
+                  <li class="platform" data-tooltip="Linux">
+                    <i aria-hidden="true" class="ph ph-linux-logo"></i>
+                  </li>
+                </ul>
+              </header>
+
+              <footer>
+                <div class="players">
+                  <a href="#" data-tooltip="MattZ6">
+                    <img src="https://github.com/mattz6.png?size=36" alt="" loading="lazy" />
+                  </a>
+                  <a href="#" data-tooltip="rsdavila">
+                    <img src="https://github.com/rsdavila.png?size=36" alt="" loading="lazy" />
+                  </a>
+                </div>
+
+                <a href="#" aria-label="Amigos que jogam Resident Evil 4">
+                  <i aria-hidden="true" class="ph ph-fire"></i>
+                  + 45 amigos
+                </a>
+              </footer>
+            </div>
+
+            <article>
+              <header>
+                <h3>Resident Evil 4</h3>
+                <span>Capcom</span>
+              </header>
+
+              <div role="list">
+                <a href="#" role="listitem">
+                  <i aria-hidden="true" class="ph ph-tag"></i>
+                  Ação
+                </a>
+                <a href="#" role="listitem">
+                  <i aria-hidden="true" class="ph ph-tag"></i>
+                  Sobrevivência
+                </a>
+                <a href="#" role="listitem">
+                  <i aria-hidden="true" class="ph ph-tag"></i>
+                  Tiro
+                </a>
+                <a href="#" role="listitem" data-tooltip="Ahí va eso! 🧟">
+                  <i aria-hidden="true" class="ph ph-tag"></i>
+                  Zumbi
+                </a>
+              </div>
+
+              <footer>
+                <button data-tooltip="Pegue meu dinheiro! 💵">
+                  <small>R$ 99,00</small>
+                  Comprar
+                </button>
+              </footer>
+            </article>
+          </section>
+
+          <section class="most-popular">
+            <header>
+              <h2>Populares</h2>
+              <a href="#">
+                Ver todos
+                <i aria-hidden="true" class="ph ph-caret-right"></i>
+              </a>
+            </header>
+
+            <div class="games-list">
+              <a href="#">
+                <img src="src/assets/hogwarts-legacy.jpg" alt="" loading="lazy" />
+
+                <footer>
+                  <span>Hogwarts Legacy</span>
+                  <div class="category">
+                    <i aria-hidden="true" class="ph ph-tag"></i>
+                    RPG
+                  </div>
+                </footer>
+              </a>
+
+              <a href="#">
+                <img src="src/assets/god-of-war-ragnarok.jpg" alt="" loading="lazy" />
+
+                <footer>
+                  <span>God of War: Ragnarok</span>
+                  <div class="category">
+                    <i aria-hidden="true" class="ph ph-tag"></i>
+                    RPG
+                  </div>
+                </footer>
+              </a>
+
+              <a href="#">
+                <img src="src/assets/the-witcher-3.jpg" alt="" loading="lazy" />
+
+                <footer>
+                  <span>The Witcher 3: Wild Hunt</span>
+                  <div class="category">
+                    <i aria-hidden="true" class="ph ph-tag"></i>
+                    RPG
+                  </div>
+                </footer>
+              </a>
+            </div>
+          </section>
+
+          <div class="row">
+            <section class="wishlist">
+              <header>
+                <h2>Lista de desejos</h2>
+                <a href="#">
+                  Ver todos
+                  <i aria-hidden="true" class="ph ph-caret-right"></i>
+                </a>
+              </header>
+
+              <div class="games-list">
+                <a href="#">
+                  <img src="src/assets/the-last-of-us-part-II.jpg" alt="" loading="lazy" />
+
+                  <footer>
+                    <span>The Last of Us: Part II</span>
+                    <div class="category">
+                      <i aria-hidden="true" class="ph ph-tag"></i>
+                      RPG
+                    </div>
+                  </footer>
+                </a>
+
+                <a href="#">
+                  <img src="src/assets/the-witcher-3.jpg" alt="" loading="lazy" />
+
+                  <footer>
+                    <span>The Witcher 3: Wild Hunt</span>
+                    <div class="category">
+                      <i aria-hidden="true" class="ph ph-tag"></i>
+                      RPG
+                    </div>
+                  </footer>
+                </a>
+              </div>
+            </section>
+
+            <section class="friends">
+              <header>
+                <h2>Amigos</h2>
+                <a href="#">
+                  Ver todos
+                  <i aria-hidden="true" class="ph ph-caret-right"></i>
+                </a>
+              </header>
+
+              <article>
+                <div data-online="true">
+                  <figure>
+                    <img src="https://github.com/rsdavila.png?size=36" alt="" loading="lazy" />
+                  </figure>
+
+                  <div>
+                    <strong>Jão</strong>
+                    <span>Jogando GTA V</span>
+                  </div>
+
+                  <button role="button">
+                    <i aria-hidden="true" class="ph ph-play"></i>
+                    Jogar
+                  </button>
+                </div>
+
+                <div>
+                  <figure>
+                    <img src="https://github.com/rsdavila.png?size=36" alt="" loading="lazy" />
+                  </figure>
+
+                  <div>
+                    <strong>Rodrigo</strong>
+                    <span>Online há 2 horas atrás</span>
+                  </div>
+                </div>
+
+                <div>
+                  <figure>
+                    <img src="https://github.com/mattz6.png?size=36" alt="" loading="lazy" />
+                  </figure>
+
+                  <div>
+                    <strong>Matheus</strong>
+                    <span>Online ontem</span>
+                  </div>
+                </div>
+              </article>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
   </div>
 </body>
 

@@ -1,11 +1,11 @@
-/* ------ Screen Sizes ------ */
+/* ----- Screen Sizes ----- */
 
-$screen-x-large: 1440px;
-$screen-large: 1200px;
-$screen-medium: 1024px;
-$screen-small: 640px;
+$screen-x-large: 1440px; // Desktop
+$screen-large: 1200px; // Desktop
+$screen-medium: 1024px; // Tablet
+$screen-small: 640px; // Smartphone
 
-/* ------ Colors ------ */
+/* ----- Colors ----- */
 
 $color-text: #feeadd;
 $color-muted: #989898;
@@ -18,7 +18,7 @@ $color-online: #3bb33b;
 $color-surface: $color-text;
 $color-element-background: rgba($color-surface, 0.05);
 
-/* ------ Fonts ------ */
+/* ----- Fonts ----- */
 
 $font-body: 'Outfit', sans-serif;
 
@@ -28,13 +28,13 @@ $font-size-body: 16px;
 $font-size-normal: 14px;
 $font-size-small: 12px;
 
-$line-height-heading: 1.2;
 $line-height-body: 1.6;
+$line-height-heading: 1.2;
 
 $text-regular: 400;
 $text-medium: 500;
 
-/* ------ Sizes & Spacings ------ */
+/* ----- Spacings ----- */
 
 $space-x-small: 4px;
 $space-smaller: 8px;
@@ -46,32 +46,23 @@ $space-x-large: 56px;
 
 $size-side-menu: 200px;
 
-/* ------ Radii ------ */
+/* ----- Radii ----- */
 
 $radii-x-small: 4px;
 $radii-small: 8px;
 $radii-normal: 12px;
 $radii-default: 24px;
-$radii-full: 99999px;
+$radii-full: 999px;
 
-/* ------ Animations ------ */
+/* ----- Animations ----- */
 
-$animation-duration-default: 150ms;
+$animation-duration: 150ms;
 
-/* ------ Classes ------ */
-
-.center-content {
-  width: 100%;
-  max-width: $screen-x-large;
-  
-  margin: 0 auto;
-}
-
-/* ------ Mixins ------ */
+/* ----- Mixins ----- */
 
 @mixin with-transition() {
   @media (prefers-reduced-motion: no-preference) {
-    transition-duration: $animation-duration-default;
+    transition-duration: $animation-duration;
     transition-timing-function: ease-in-out;
   }
 }
@@ -79,7 +70,7 @@ $animation-duration-default: 150ms;
 @mixin with-outline($color: $color-surface) {
   @include with-transition();
   transition-property: outline-color;
-  
+
   outline: 2px solid transparent;
   outline-offset: 2px;
 
@@ -90,7 +81,7 @@ $animation-duration-default: 150ms;
 
 @mixin with-common-interaction($color: $color-surface) {
   @include with-outline($color);
-  transition-property: background-color, color, outline-color;
+  transition-property: outline-color, background-color, color;
 
   &:not(:disabled):hover {
     background-color: rgba($color, 0.1);
@@ -98,53 +89,200 @@ $animation-duration-default: 150ms;
   }
 }
 
-/* ------ Utils ------ */
+@mixin base-section() {
+  display: flex;
+  flex-direction: column;
+  gap: $space-smaller;
 
-[data-tooltip] {
-  position: relative;
+  > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  &:not(:disabled) {
-    &:hover, &:focus-visible {
-      &::after {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    > h2 {
+      color: $color-text;
+      font-size: $font-size-medium;
+      font-weight: $text-medium;
+      letter-spacing: 0.5px;
     }
 
-    &::after {
-      @include with-transition;
+    > a {
+      @include with-common-interaction();
 
-      opacity: 0;
-      transform: translateY(-2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: $space-x-small;
 
-      content: attr(data-tooltip);
+      font-size: $font-size-normal;
+      color: $color-muted;
 
-      position: absolute;
-      top: calc(100% + 8px);
+      height: 32px;
+      padding: 0 $space-small;
+      border-radius: $radii-small;
 
-      max-width: 200px;
-      
-      align-self: center;
-      justify-self: center;
-
-      font-size: $font-size-small;
-      color: $color-text;
-
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-
-      padding: $space-x-small 6px;
-      background-color: darken($color-background, 5%);
-      border-radius: $radii-x-small;
-
-      pointer-events: none;
-      z-index: 1;
+      @media screen and (max-width: $screen-medium) {
+        margin-right: -$space-small;
+      }
     }
   }
 }
 
-/* ------ Default Styles ------ */
+/* ----- Classes ----- */
+
+.center-content {
+  width: 100%;
+  max-width: $screen-x-large;
+
+  margin: 0 auto;
+}
+
+.games-list {
+  display: grid;
+
+  $game-padding: 8px;
+
+  margin: 0 (-$game-padding);
+
+  @media screen and (max-width: $screen-medium) {
+    display: flex;
+
+    overflow-x: auto;
+
+    padding: $game-padding $space-normal;
+    margin: (-$game-padding) (-$space-medium);
+
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 $space-normal;
+  }
+
+  > a {
+    @include with-common-interaction;
+    transition-property: outline-color, transform, background-color;
+
+    display: flex;
+    flex-direction: column;
+    gap: $space-normal;
+
+    padding: $game-padding;
+
+    border-top-left-radius: $radii-default;
+    border-top-right-radius: $radii-default;
+
+    border-bottom-left-radius: $radii-normal;
+    border-bottom-right-radius: $radii-normal;
+
+    overflow: hidden;
+
+    outline: none;
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-4px);
+      background-color: $color-element-background;
+    }
+
+    @media screen and (max-width: $screen-medium) {
+      width: 360px;
+      flex-shrink: 0;
+
+      scroll-snap-align: start;
+    }
+
+    @media screen and (max-width: $screen-small) {
+      width: 320px;
+    }
+
+    > img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: $radii-default;
+    }
+
+    > footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: $space-normal;
+
+      > span {
+        font-size: $font-size-normal;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        color: $color-text;
+      }
+
+      > .category {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-smaller;
+
+        color: $color-text;
+
+        font-size: $font-size-small;
+
+        height: 28px;
+        padding: 0 $space-small;
+        border-radius: $radii-small;
+
+        background-color: $color-element-background;
+      }
+    }
+  }
+}
+
+/* ----- Utils ----- */
+
+[data-tooltip] {
+  position: relative;
+
+  &:not(:disabled):hover, &:focus-visible {
+    &::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &::after {
+    @include with-transition;
+    transition-property: opacity, transform;
+
+    content: attr(data-tooltip);
+
+    opacity: 0;
+    transform: translateY(-2px);
+
+    position: absolute;
+    top: calc(100% + 8px);
+
+    align-self: center;
+    justify-self: center;
+
+    max-width: 200px;
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-size: $font-size-small;
+    line-height: $line-height-body;
+    color: $color-text;
+
+    padding: $space-x-small 6px;
+    border-radius: $radii-x-small;
+    background-color: darken($color-background, 5%);
+
+    pointer-events: none;
+
+    z-index: 1;
+  }
+}
+
+/* ----- Default Styles ----- */
 
 * {
   margin: 0;
@@ -167,10 +305,10 @@ html {
 }
 
 body {
-  background-color: $color-background;
+  background: $color-background;
 }
 
-h1, h2, h3, h6 {
+h1, h2, h3, h6, button {
   font-weight: $text-medium;
   line-height: $line-height-heading;
 }
@@ -184,19 +322,15 @@ a {
   text-decoration: none;
 }
 
-button:disabled {
-  cursor: not-allowed;
-}
-
-button:not(:disabled) {
-  cursor: pointer;
+::selection {
+  color: $color-text;
+  background-color: rgba($color-primary, 0.9);
 }
 
 img, a, button {
   user-select: none;
 }
 
-::selection {
-  color: $color-text;
-  background-color: rgba($color-primary, 0.9);
+button:not(:disabled) {
+  cursor: pointer;
 }

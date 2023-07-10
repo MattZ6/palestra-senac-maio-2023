@@ -1,0 +1,7 @@
+section.most-popular {
+  @include base-section;
+
+  > .games-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

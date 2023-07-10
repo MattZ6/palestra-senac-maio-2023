@@ -6,6 +6,10 @@ header.app-header {
 
   backdrop-filter: blur(25px);
 
+  @media screen and (max-width: $screen-medium) {
+    background-color: rgba($color-background, 0.64);
+  }
+
   > .center-content {
     display: flex;
     align-items: center;
@@ -13,9 +17,33 @@ header.app-header {
 
     padding: $space-large $space-medium;
 
+    @media screen and (max-width: $screen-x-large) {
+      justify-content: space-between;
+    }
+
+    @media screen and (max-width: $screen-medium) {
+      gap: 0;
+
+      padding: $space-medium;
+    }
+
+    @media screen and (max-width: $screen-small) {
+      padding: $space-normal $space-medium;
+    }
+
     > .brand {
       width: $size-side-menu;
       padding: 0 $space-smaller;
+
+      @media screen and (max-width: $screen-x-large) {
+        width: 48px;
+
+        > h6 {
+          > span {
+            display: none;
+          }
+        }
+      }
 
       > h6 {
         display: flex;
@@ -24,6 +52,7 @@ header.app-header {
 
         font-size: $font-size-medium;
         text-transform: uppercase;
+
         letter-spacing: 2px;
 
         > i {
@@ -37,8 +66,10 @@ header.app-header {
           height: $size;
           border-radius: $size;
 
-          background-color: $color-surface;
+          font-size: $font-size-heading;
+
           color: $color-background;
+          background-color: $color-surface;
         }
       }
     }
@@ -47,12 +78,17 @@ header.app-header {
       width: 100%;
       max-width: 480px;
 
-      display: flex;
+      display: inline-flex;
       align-items: center;
 
       position: relative;
 
       $icon-size: 24px;
+
+      @media screen and (max-width: $screen-medium) {
+        display: none;
+        visibility: hidden;
+      }
 
       &:focus-within {
         > i {
@@ -68,7 +104,12 @@ header.app-header {
         left: 16px;
 
         font-size: $icon-size;
+
         color: $color-muted;
+
+        transition-duration: $animation-duration;
+        transition-timing-function: ease-in-out;
+        transition-property: color;
       }
 
       > input {
@@ -80,6 +121,8 @@ header.app-header {
         height: 44px;
         border-radius: $radii-normal;
 
+        border: none;
+
         background-color: $color-element-background;
 
         padding-left: $space-normal + $icon-size + $space-normal;
@@ -87,6 +130,8 @@ header.app-header {
 
         font-size: $font-size-body;
         color: $color-text;
+
+        caret-color: $color-primary;
 
         border: 2px solid transparent;
 
@@ -107,8 +152,12 @@ header.app-header {
 
       margin-left: auto;
 
+      @media screen and (max-width: $screen-x-large) {
+        margin-left: unset;
+      }
+
       > a {
-        @include with-common-interaction;
+        @include with-common-interaction();
 
         display: flex;
         align-items: center;
@@ -123,6 +172,7 @@ header.app-header {
         border-radius: $size;
 
         background-color: $color-element-background;
+
         color: $color-muted;
 
         > i {
@@ -138,14 +188,15 @@ header.app-header {
 
           border: 2px solid $color-primary;
         }
-        
+
         &[data-pending="true"] {
           &::before {
             content: '';
 
             position: absolute;
-            top: 0;
-            right: 0;
+
+            top: 0px;
+            right: 0px;
 
             $size: 8px;
 
@@ -153,12 +204,12 @@ header.app-header {
             height: $size;
             border-radius: $size;
 
-            background-color: $color-primary;
             border: 2px solid $color-background;
+
+            background-color: $color-primary;
           }
         }
       }
     }
   }
 }
-
