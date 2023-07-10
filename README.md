@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.senac.br/images/senac_logo.png" width="200" />
+  <img src="github/senac.png" width="200" />
 </p>
 
 > Projeto construído como exemplo com as turmas do 3º e 5º período do curso de Tecnologia em Análise e Desenvolvimento de Sistemas do [SENAC Portão](https://www.pr.senac.br/principal/?uep=46), no dia 31 de maio de 2023.
