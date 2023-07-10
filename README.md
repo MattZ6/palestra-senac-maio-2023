@@ -21,10 +21,10 @@ A partir de um terminal (cmd, bash, ...):
 
 ```bash
 # Clone o repositório
-$ git clone https://github.com/MattZ6/palestra-senac-2020.git musiquinhas
+$ git clone https://github.com/MattZ6/palestra-senac-maio-2023.git joguinhos
 
 # Entre na pasta do projeto
-$ cd musiquinhas
+$ cd joguinhos
 
 # Abra o VSCode na pasta do projeto
 $ code .
